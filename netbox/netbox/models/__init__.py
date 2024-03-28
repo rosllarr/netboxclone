@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
+from django.core.validators import ValidationError
 
 
 class NetboxModel(models.Model):
@@ -15,8 +16,21 @@ class NetboxModel(models.Model):
         """
         super().clean()
 
-        for field in self.__meta.get_field():
+        for field in self._meta.get_field():
             if isinstance(field, GenericForeignKey):
+                ct_value = getattr(self, field.ct_field, None)
+                fk_value = getattr(self, field.fk_field, None)
+
+                if ct_value is None and fk_value is not None:
+                    raise ValidationError({
+                        field.ct_field: "This field cannot be null.",
+                    })
+                if fk_value is None and ct_value is not None:
+                    raise ValidationError({
+                        field.fk_field: "This field cannot be null.",
+                    })
+
+                if ct_value and fk_value:
 
 
 #
