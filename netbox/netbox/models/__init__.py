@@ -1,4 +1,5 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.core.validators import ValidationError
 
@@ -31,13 +32,23 @@ class NetboxModel(models.Model):
                     })
 
                 if ct_value and fk_value:
+                    klass = getattr(self, field.ct_field).model_class()
+                    try:
+                        obj = klass.objects.get(pk=fk_value)
+                    except ObjectDoesNotExist:
+                        raise ValidationError({
+                            field.fk_field: f"Related object not found using the provided value: {fk_value}."
+                        })
+
+                    # update the GFK field value
+                    setattr(self, field.name, obj)
 
 
 #
 # NetBox internal base models
 #
 
-class PrimaryModel():
+class PrimaryModel(NetboxModel):
     """
     Primary models represent real objects within the infrastructure being modeled.
     """
