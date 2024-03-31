@@ -1,5 +1,5 @@
 {
     "flake8.args": [
-        "--ignore=F403,F405,E501",
+        "--ignore=F401,F403,F405,E501",
     ],
 }
