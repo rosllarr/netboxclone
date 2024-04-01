@@ -1,7 +1,6 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import models
-from django.core.validators import ValidationError
 
 
 class NetboxModel(models.Model):

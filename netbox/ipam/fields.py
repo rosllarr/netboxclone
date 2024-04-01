@@ -9,6 +9,9 @@ from netbox.ipam.formfields import IPNetworkFormField
 
 class BaseIPField(models.Field):
 
+    def python_type(self):
+        return IPNetwork
+
     def from_db_value(self, value, expression, connection):
         return self.to_python(value)
 
