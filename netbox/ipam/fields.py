@@ -3,8 +3,8 @@ from django.db import models
 from django.utils.translation import gettext as _
 from netaddr import AddrFormatError, IPNetwork
 
-from netbox.ipam import validators
-from netbox.ipam.formfields import IPNetworkFormField
+from ipam import validators
+from ipam.formfields import IPNetworkFormField
 
 
 class BaseIPField(models.Field):
@@ -49,5 +49,5 @@ class IPNetworkField(BaseIPField):
     description = "PostgreSQL CIDR field"
     default_validators = [validators.prefix_validator]
 
-    def db_type(self, connect):
+    def db_type(self, connection):
         return 'cidr'
