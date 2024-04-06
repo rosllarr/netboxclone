@@ -53,11 +53,13 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     alias z='cd'
     dnf update -y
-    dnf install -y postgresql-server, redis, python3-pip, python3.12, git
+    dnf install -y postgresql-server redis python3-pip python3.12 git
     postgresql-setup --initdb
     systemctl enable --now postgresql
     systemctl enable --now redis
     git config --global user.email "rosllarr@tutanota.com"
     git config --global user.name "rosllarr"
   SHELL
+
+  config.vm.provision "file", source: "~/.ssh/rosllarr_rsa", destination: "/home/vagrant/.ssh/id_rsa"
 end
