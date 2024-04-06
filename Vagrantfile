@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
     dnf update -y
     dnf install -y postgresql-server redis python3-pip python3.12 git
 
-    if [ ! -d /var/lib/pgsql/data ]; then postgresql-setup --initdb directory; fi
+    if [ ! -d /var/lib/pgsql/data ]; then postgresql-setup --initdb; fi
 
     systemctl enable --now postgresql
     systemctl enable --now redis
