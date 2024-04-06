@@ -22,13 +22,4 @@
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     "peacock.color": "#215732",
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        "./netbox",
-        "-p",
-        "test_*.py"
-    ],
-    "python.testing.pytestEnabled": false,
-    "python.testing.unittestEnabled": true,
 }
