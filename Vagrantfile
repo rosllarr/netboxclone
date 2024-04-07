@@ -65,8 +65,10 @@ Vagrant.configure("2") do |config|
     git config --global pull.rebase false
     git config --global user.email "rosllarr@tutanota.com"
     git config --global user.name "rosllarr"
+    git config --global pull.rebase false
 
   SHELL
 
+  # Copy private ssh key for git access.
   config.vm.provision "file", source: "~/.ssh/rosllarr_rsa", destination: "/home/vagrant/.ssh/id_rsa"
 end
