@@ -52,7 +52,8 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script.
   config.vm.provision "shell", inline: <<-SHELL
 
-    alias z='cd'
+    echo -n "alias z='cd'" >> ~/.bashrc
+    echo -n "" >> ~/.bashrc
 
     dnf update -y
     dnf install -y postgresql-server redis python3-pip python3.12 git
@@ -65,7 +66,6 @@ Vagrant.configure("2") do |config|
     git config --global pull.rebase false
     git config --global user.email "rosllarr@tutanota.com"
     git config --global user.name "rosllarr"
-    git config --global pull.rebase false
 
   SHELL
 
