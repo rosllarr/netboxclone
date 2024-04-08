@@ -16,13 +16,13 @@ class Prefix(PrimaryModel):
         verbose_name=_('prefix'),
         help_text=_('IPv4 or IPv6 network with mask')
     )
-    status = models.CharField(
-        max_length=50,
-        choices=PrefixStatusChoices,
-        default=PrefixStatusChoices.STATUS_ACTIVE,
-        verbose_name=_('status'),
-        help_text=_('Operational status of this prefix')
-    )
+    # status = models.CharField(
+    #     max_length=50,
+    #     choices=PrefixStatusChoices,
+    #     default=PrefixStatusChoices.STATUS_ACTIVE,
+    #     verbose_name=_('status'),
+    #     help_text=_('Operational status of this prefix')
+    # )
 
     class Meta:
         ordering = ('prefix', 'pk')

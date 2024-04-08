@@ -67,7 +67,7 @@ WSGI_APPLICATION = 'netbox.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netboxclone',
+        'NAME': 'netbox',
         'USER': 'netbox',
         'PASSWORD': 'netbox',
         'HOST': '127.0.0.1',
@@ -132,3 +132,5 @@ CORS_ORIGIN_REGEX_WHITELIST = [
 
 # The name to use for the CSRF token cookie.
 CSRF_COOKIE_NAME = 'csrftoken'
+
+FIELD_CHOICES = {}

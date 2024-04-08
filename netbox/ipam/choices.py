@@ -1,7 +1,9 @@
 from django.utils.translation import gettext_lazy as _
 
+from utilities.choices import ChoiceSet
 
-class PrefixStatusChoices():
+
+class PrefixStatusChoices(ChoiceSet):
     key = 'Prefix.status'
 
     STATUS_CONTAINER = 'container'
